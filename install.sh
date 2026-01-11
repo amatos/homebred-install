@@ -3,6 +3,10 @@
 # Author  : Chad Mayfield (chad@chadmayfield.com)
 # License : GPLv3
 #
+# Last Modified: 2026-01-10
+# Added symlinks for multiple openjdk Java versions
+# Added openjdk Java versions to jenv
+#
 # setup macOS using Homebrew
 #
 
@@ -75,5 +79,18 @@ brew doctor
 
 # display outdated apps and auto-update status
 brew cu --include-mas
+
+# symlink OpenJDK to /Library/Java/JavaVirtualMachines/
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk        # current OpenJDK
+sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk  # OpenJDK 11
+sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk  # OpenJDK 17
+sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk  # OpenJDK 21
+
+# Add JDKs to jenv
+jenv add /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home
+
 
 #EOF

@@ -5,6 +5,10 @@
 # Original Source: https://gist.github.com/chadmayfield/ada07e4e506d7acd577a665541a70c9b
 # License : GPLv3
 #
+# Last Modified: 2026-01-10
+# Added multiple openjdk versions
+# Added jenv
+#
 # INFO: * Links and comments are added because I'm too old to remember where everything is :)
 #       * install.sh can be used, but it needs some love (some of it doesn't work correctly).
 #       * TODO items (and additional information) is listed at the bottom
@@ -275,7 +279,12 @@ brew "upx"                   # https://upx.github.io/
 # java
 brew "groovy"                # [https://www.groovy-lang.org/]
 brew "gradle"                # [https://www.gradle.org/]
-brew "openjdk"
+brew "openjdk"               # Current OpenJDK
+brew "openjdk@11"            # OpenJDK 11
+brew "openjdk@17"            # OpenJDK 17
+brew "openjdk@21"            # OpenJDK 21
+brew "jenv"                  # Java version management [https://github.com/jenv/jenv]
+
 # python (should always be installed)
 if OS.mac?
   brew "micropython"         # python for microcontrollers [https://www.micropython.org/]
