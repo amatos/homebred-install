@@ -349,7 +349,7 @@ brew "dos2unix"
 # brew "mackup"                # sync mac/linux app settings [https://github.com/lra/mackup]
 brew "moreutils"             # sponge, pee, parallel, etc.
 brew "pv"                    # pipe viewer, monitor data through pipe [http://www.ivarch.com/programs/pv.shtml]
-brew "tldr"                  # user-friendly man [https://tldr.sh/]
+brew "tealdeer"              # user-friendly man [https://tealdeer-rs.github.io/tealdeer/]
 brew "viddy"                 # a modern watch replacement [https://github.com/sachaos/viddy]
 brew "watch"
 # multiplexers
@@ -404,6 +404,9 @@ brew "certbot" if OS.linux?  # formerly letsencrypt [https://certbot.eff.org/]
 brew "ffuf"                  # fast web fuzzer (in Go) [https://github.com/ffuf/ffuf]
 brew "fzf"                   # cli fuzzy finder (in Go) [https://github.com/junegunn/fzf]
 brew "gnupg"
+brew "sequoia-chameleon-gnupg"
+brew "pinentry"
+brew "pinentry-mac"
 brew "grype"                 # container vuln scanner [https://github.com/anchore/grype]
 brew "hydra"                 # net logon cracker [https://github.com/vanhauser-thc/thc-hydra]
 brew "john"                  # password cracker [https://www.openwall.com/john/]
@@ -496,7 +499,7 @@ if OS.mac?
   cask "betterdisplay"
   cask "bettermouse"
   cask "ghostty"
-  cask "gpg-suite"
+  cask "gpg-suite@nightly"
   cask "helium-browser"
   cask "hex-fiend"
   cask "iterm2"
