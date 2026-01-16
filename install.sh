@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Author  : Chad Mayfield (chad@chadmayfield.com)
+# Author: Alberth Matos (alberth@matos.cc)
+# Original Author  : Chad Mayfield (chad@chadmayfield.com)
 # License : GPLv3
 #
-# Last Modified: 2026-01-10
-# Added symlinks for multiple openjdk Java versions
-# Added openjdk Java versions to jenv
+# Last Modified: 2026-01-16
+# Check if openjdk symlinks exist before trying to create it, and add to jenv
 #
 # setup macOS using Homebrew
 #
@@ -80,17 +80,22 @@ brew doctor
 # display outdated apps and auto-update status
 brew cu --include-mas
 
-# symlink OpenJDK to /Library/Java/JavaVirtualMachines/
-sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk        # current OpenJDK
-sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk  # OpenJDK 11
-sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk  # OpenJDK 17
-sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk  # OpenJDK 21
-
-# Add JDKs to jenv
-jenv add /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home
-
+# symlink OpenJDK to /Library/Java/JavaVirtualMachines/, and add to jenv
+if [ ! -e "/Library/Java/JavaVirtualMachines/openjdk.jdk" ]; then
+  sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk        # current OpenJDK
+  jenv add /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+fi
+if [ ! -e "/Library/Java/JavaVirtualMachines/openjdk-11.jdk" ]; then
+  sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk  # OpenJDK 11
+  jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+fi
+if [ ! -e "/Library/Java/JavaVirtualMachines/openjdk-17.jdk" ]; then
+  sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk  # OpenJDK 17
+  jenv add /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+fi
+if [ ! -e "/Library/Java/JavaVirtualMachines/openjdk-21.jdk" ]; then
+  sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk  # OpenJDK 21
+  jenv add /Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home
+fi
 
 #EOF

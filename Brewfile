@@ -5,9 +5,8 @@
 # Original Source: https://gist.github.com/chadmayfield/ada07e4e506d7acd577a665541a70c9b
 # License : GPLv3
 #
-# Last Modified: 2026-01-10
-# Added multiple openjdk versions
-# Added jenv
+# Last Modified: 2026-01-16
+# Added terminal-notifier
 #
 # INFO: * Links and comments are added because I'm too old to remember where everything is :)
 #       * install.sh can be used, but it needs some love (some of it doesn't work correctly).
@@ -346,7 +345,8 @@ brew "smartmontools"
 brew "chezmoi"               # securely sync dotfiles (https://www.chezmoi.io/) [https://github.com/twpayne/chezmoi]
 brew "coreutils"             # chown/chmod, du, cut, uniq, shred, etc.
 brew "dos2unix"
-# brew "mackup"                # sync mac/linux app settings [https://github.com/lra/mackup]
+brew "terminal-notifier"     # macOS notification system [https://github.com/julienXX/terminal-notifier]
+brew "mackup"                # sync mac/linux app settings [https://github.com/lra/mackup]
 brew "moreutils"             # sponge, pee, parallel, etc.
 brew "pv"                    # pipe viewer, monitor data through pipe [http://www.ivarch.com/programs/pv.shtml]
 brew "tealdeer"              # user-friendly man [https://tealdeer-rs.github.io/tealdeer/]
