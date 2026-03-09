@@ -128,7 +128,10 @@ end
 # third-party taps
 tap "buo/cask-upgrade"        # 'brew cu' [https://github.com/buo/homebrew-cask-upgrade]
 tap "dracula/install"         # dracula [https://github.com/dracula/homebrew-install]
-tap "FelixKratz/formulae"   # Borders and Sketchybar [https://github.com/FelixKratz/homebrew-formulae]
+tap "felixkratz/formulae"   # Borders and Sketchybar [https://github.com/FelixKratz/homebrew-formulae]
+tap "mfkrause/tap"          # Consul
+tap "wader/tap"
+
 
 
 ###############################################################################
@@ -193,7 +196,7 @@ brew "wader/tap/fq"          # "jq for binary formats" [https://github.com/wader
 # git
 brew "act"                   # run github actions locally [https://github.com/nektos/act]
 brew "bfg"                   # repo cleaner [https://rtyley.github.io/bfg-repo-cleaner/]
-brew "gh" if Dir.exist?("~/src") # github cli [https://github.com/cli/cli]
+brew "gh"                    # github cli [https://github.com/cli/cli]
 brew "git"                   # distributed revision control [https://git-scm.com]
 brew "git-extras"            # git utilities [https://github.com/tj/git-extras]
 brew "git-flow"              # git-flow branching [https://github.com/nvie/gitflow]
@@ -225,6 +228,9 @@ if OS.mac?
   brew "pyenv-virtualenv", link: false
   brew "python", link: false
 end
+brew "sphinx-doc"       # Sphinx documentation [https://www.sphinx-doc.org/]
+brew "pylint"
+brew "pyrefly"
 # rpm build tools
 brew "create-dmg"            # build fancy DMGs [https://github.com/create-dmg/create-dmg]
 if !Hardware::CPU.arm?
@@ -234,7 +240,8 @@ end
 # rust
 brew "rust"                  # [https://www.rust-lang.org/]
 brew "rustup"                # [https://rust-lang.github.io/rustup/]
-
+# Ruby
+brew "rbenv"
 # Text Editors
 brew "neovim" if OS.mac?     # extensible vim-fork [https://neovim.io/]
 brew "vim" if OS.linux?
@@ -251,6 +258,8 @@ brew "walk"                  # terminal file manager [https://github.com/antonme
 brew "yazi"                  # fast file manager [https://github.com/sxyazi/yazi]
 brew "zoxide"                # a smarter cd command [https://github.com/ajeetdsouza/zoxide]
 brew "trash-cli"
+brew "fzf"                   # fuzzy finder [https://github.com/junegunn/fzf]
+brew "direnv"                # environment variables management [https://direnv.net/]
 
 # misc
 brew "chezmoi"               # securely sync dotfiles (https://www.chezmoi.io/) [https://github.com/twpayne/chezmoi]
@@ -263,6 +272,8 @@ brew "dockutil" if OS.mac?  # a cli utility for managing macOS dock items. [http
 brew "tmux"                  # https://github.com/tmux/tmux/wiki/Getting-Started (https://tmuxcheatsheet.com/)
 brew "tpm"                   # tmux plugin manager [https://github.com/tmux-plugins/tpm]
 brew "sesh"                  # tmux session manager [https://github.com/tmux-plugins/sesh]
+brew "starship"              # Starship shell prompt
+brew "fastfetch"             # system information
 
 # processes/resource mgmt
 brew "btop"                  # resource monitor [https://github.com/aristocratos/btop]
@@ -294,7 +305,8 @@ brew "exiftool"              # read/write EXIF data [https://exiftool.org]
 brew "ghostscript"           # required for imagemagick
 brew "imagemagick"#, args: ["with-webp"]
 brew "poppler"               # pdf rendering library [https://poppler.freedesktop.org/]
-
+brew "zbar"                  # barcode reader [https://github.com/ZBar/ZBar]
+brew "qrencode"              # QR code generator [https://github.com/fukuchi/libqrencode]
 
 ###############################################################################
 # Install apps not available as casks from Mac App Store using mas-cli
@@ -356,6 +368,7 @@ if OS.mac? && File.exist?("/opt/homebrew/bin/mas")
     mas "Windows App", id:1295203466
     mas "WireGuard", id:1451685025
     mas "Xcode", id: 497799835
+    mas "Drafts", id: 1435957248
 end #OS.mac? && File.exist?("/opt/homebrew/bin/mas")
 
 ###############################################################################
@@ -389,6 +402,7 @@ if OS.mac?
     cask "autodesk-fusion"
     cask "betterdiscord-installer"
     cask "betterdisplay"
+    cask "crossover"
     cask "discord"
     cask "dracula-betterdiscord"
     cask "dracula-macos-color-picker"
@@ -406,7 +420,6 @@ if OS.mac?
     cask "hex-fiend"
     cask "iina"
     cask "inkscape"
-    cask "intellij-idea"
     cask "iterm2"
     cask "itermai"
     cask "jetbrains-toolbox"
